@@ -13,6 +13,8 @@
                 canvas.height = 480;
                 context.lineWidth = 2;
 
+                /*
+
                 // Calculate min length needed
                 // to reach canvas edges.
                 var x = canvas.width/2;
@@ -35,6 +37,24 @@
 
                     console.log('Drawing line:', start_x, start_y, end_x, end_y);
                 }
+                */
+
+                // ---------
+                // | 0 | 1 |
+                // |---+---|
+                // | 2 | 3 |
+                // ---------
+                fill_quadrant = function(n) {
+                    var points = [
+                        [0, 0, canvas.width / 2, canvas.height / 2],
+                        [canvas.width / 2, 0, canvas.width, canvas.height / 2],
+                        [0, canvas.height/2, canvas.width/2, canvas.height / 2],
+                        [canvas.width/2, canvas.height/2, canvas.width, canvas.height],
+                    ];
+                    context.beginPath();
+                    context.rect(points[n][0], points[n][1], points[n][2], points[n][3]);
+                    context.fill();
+                };
             }
 
             window.onload = init;
