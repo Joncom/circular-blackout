@@ -13,7 +13,12 @@
                 canvas.height = 480;
                 context.lineWidth = 2;
 
-                var length = 100;
+                // Calculate min length needed
+                // to reach canvas edges.
+                var x = canvas.width/2;
+                var y = canvas.height/2
+                var length = Math.sqrt(x*x + y*y);
+
                 var start_x = canvas.width/2;
                 var start_y = canvas.height/2;
                 for(var angle=0; angle<2*Math.PI; angle+=0.1) {
