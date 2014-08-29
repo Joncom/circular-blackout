@@ -7,8 +7,8 @@
 
             function init() {
 
-                var canvas = document.getElementById('canvas');
-                var context = canvas.getContext('2d');
+                canvas = document.getElementById('canvas');
+                context = canvas.getContext('2d');
                 canvas.width = 640;
                 canvas.height = 480;
                 context.lineWidth = 2;
@@ -21,52 +21,61 @@
                 length *= 16; // XXX
                 //length = 64;
 
-                var start_x = canvas.width/2;
-                var start_y = canvas.height/2;
+                draw = function(angle) {
 
-                var angle = (Math.PI/4) * 8;
-                var points = [];
+                    context.clearRect ( 0 , 0 , canvas.width , canvas.height );
 
+                    var start_x = canvas.width/2;
+                    var start_y = canvas.height/2;
 
-                points.push({ x: start_x, y: start_y + length }); // Bottom center
+                    var points = [];
+                    points.push({ x: start_x, y: start_y + length }); // Bottom center
 
-                if(angle >= (Math.PI/4) * 2) {
-                    points.push({ x: canvas.width, y: canvas.height }); // Bottom right
-                    points.push({ x: canvas.width, y: canvas.height/2 }); // Middle right
-                }
+                    if(angle >= (Math.PI/4) * 2) {
+                        points.push({ x: canvas.width, y: canvas.height }); // Bottom right
+                        points.push({ x: canvas.width, y: canvas.height/2 }); // Middle right
+                    }
 
-                if(angle >= (Math.PI/4) * 3) {
-                    points.push({ x: canvas.width, y: 0 }); // Top right
-                }
+                    if(angle >= (Math.PI/4) * 3) {
+                        points.push({ x: canvas.width, y: 0 }); // Top right
+                    }
 
-                if(angle >= (Math.PI/4) * 4) {
-                    points.push({ x: canvas.width/2, y: 0 }); // Top middle point
-                }
+                    if(angle >= (Math.PI/4) * 4) {
+                        points.push({ x: canvas.width/2, y: 0 }); // Top middle point
+                    }
 
-                if(angle >= (Math.PI/4) * 6) {
-                    points.push({ x: 0, y: 0 }); // Top left
-                    points.push({ x: 0, y: canvas.height/2 }); // Middle left
-                }
+                    if(angle >= (Math.PI/4) * 6) {
+                        points.push({ x: 0, y: 0 }); // Top left
+                        points.push({ x: 0, y: canvas.height/2 }); // Middle left
+                    }
 
-                if(angle >= (Math.PI/4) * 8) {
-                    points.push({ x: 0, y: canvas.height });
-                }
+                    if(angle >= (Math.PI/4) * 8) {
+                        points.push({ x: 0, y: canvas.height });
+                    }
 
-                // End point
-                points.push({
-                    x: start_x + Math.sin(angle) * length,
-                    y: start_y + Math.cos(angle) * length
-                });
+                    // End point
+                    points.push({
+                        x: start_x + Math.sin(angle) * length,
+                        y: start_y + Math.cos(angle) * length
+                    });
 
-                context.beginPath();
-                context.moveTo(start_x, start_y);
+                    context.beginPath();
+                    context.moveTo(start_x, start_y);
 
-                for(var i=0; i<points.length; i++) {
-                    var point = points[i];
-                    context.lineTo(point.x, point.y);
-                }
+                    for(var i=0; i<points.length; i++) {
+                        var point = points[i];
+                        context.lineTo(point.x, point.y);
+                    }
 
-                context.fill();
+                    context.fill();
+                };
+
+                // Animate
+                var angle = 0;
+                setInterval(function() {
+                    draw(angle);
+                    angle += 0.01;
+                }, 20);
             }
 
             window.onload = init;
