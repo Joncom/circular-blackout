@@ -13,48 +13,58 @@
                 canvas.height = 480;
                 context.lineWidth = 2;
 
-                /*
-
                 // Calculate min length needed
                 // to reach canvas edges.
                 var x = canvas.width/2;
                 var y = canvas.height/2
                 var length = Math.sqrt(x*x + y*y);
+                length *= 16; // XXX
+                //length = 64;
 
                 var start_x = canvas.width/2;
                 var start_y = canvas.height/2;
-                for(var angle=0; angle<2*Math.PI; angle+=0.1) {
 
-                    var offset_x = Math.sin(angle) * length;
-                    var offset_y = Math.cos(angle) * length;
-                    var end_x = start_x + offset_x;
-                    var end_y = start_y + offset_y;
+                var angle = Math.PI/2 + Math.PI/4 + Math.PI/4;
+                var points = [];
 
-                    context.beginPath();
-                    context.moveTo(start_x, start_y);
-                    context.lineTo(end_x, end_y);
-                    context.stroke();
+                // Bottom center point
+                points.push({ x: start_x, y: start_y + length });
 
-                    console.log('Drawing line:', start_x, start_y, end_x, end_y);
+                if(angle >= Math.PI/2) {
+
+                    // Bottom right point
+                    points.push({ x: canvas.width, y: canvas.height });
+
+                    // Middle right point
+                    points.push({ x: canvas.width, y: canvas.height/2 });
                 }
-                */
 
-                // ---------
-                // | 0 | 1 |
-                // |---+---|
-                // | 2 | 3 |
-                // ---------
-                fill_quadrant = function(n) {
-                    var points = [
-                        [0, 0, canvas.width / 2, canvas.height / 2],
-                        [canvas.width / 2, 0, canvas.width, canvas.height / 2],
-                        [0, canvas.height/2, canvas.width/2, canvas.height / 2],
-                        [canvas.width/2, canvas.height/2, canvas.width, canvas.height],
-                    ];
-                    context.beginPath();
-                    context.rect(points[n][0], points[n][1], points[n][2], points[n][3]);
-                    context.fill();
-                };
+                if(angle >= Math.PI/2 + Math.PI/4) {
+
+                    // Top right point
+                    points.push({ x: canvas.width, y: 0 });
+                }
+
+                if(angle >= Math.PI/2 + Math.PI/4 + Math.PI/4) {
+
+                    // Top middle point
+                    points.push({ x: canvas.width/2, y: 0 });
+                }
+
+                points.push({
+                    x: start_x + Math.sin(angle) * length,
+                    y: start_y + Math.cos(angle) * length
+                });
+
+                context.beginPath();
+                context.moveTo(start_x, start_y);
+
+                for(var i=0; i<points.length; i++) {
+                    var point = points[i];
+                    context.lineTo(point.x, point.y);
+                }
+
+                context.fill();
             }
 
             window.onload = init;
