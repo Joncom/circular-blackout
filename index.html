@@ -3,6 +3,38 @@
     <head>
         <meta charset="utf-8" />
         <title></title>
+        <script type="text/javascript">
+
+            function init() {
+
+                var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
+                canvas.width = 640;
+                canvas.height = 480;
+                context.lineWidth = 2;
+
+                var length = 100;
+                var start_x = canvas.width/2;
+                var start_y = canvas.height/2;
+                for(var angle=0; angle<2*Math.PI; angle+=0.1) {
+
+                    var offset_x = Math.sin(angle) * length;
+                    var offset_y = Math.cos(angle) * length;
+                    var end_x = start_x + offset_x;
+                    var end_y = start_y + offset_y;
+
+                    context.beginPath();
+                    context.moveTo(start_x, start_y);
+                    context.lineTo(end_x, end_y);
+                    context.stroke();
+
+                    console.log('Drawing line:', start_x, start_y, end_x, end_y);
+                }
+            }
+
+            window.onload = init;
+
+        </script>
     </head>
     <body>
         <canvas id="canvas"></canvas>
