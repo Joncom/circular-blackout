@@ -24,7 +24,7 @@
                 var start_x = canvas.width/2;
                 var start_y = canvas.height/2;
 
-                var angle = Math.PI/2 + Math.PI/4 + Math.PI/4;
+                var angle = (Math.PI/4) * 6;
                 var points = [];
 
 
@@ -42,6 +42,11 @@
 
                 if(angle >= (Math.PI/4) * 4) {
                     points.push({ x: canvas.width/2, y: 0 }); // Top middle point
+                }
+
+                if(angle >= (Math.PI/4) * 6) {
+                    points.push({ x: 0, y: 0 }); // Top left
+                    points.push({ x: 0, y: canvas.height/2 }); // Middle left
                 }
 
                 // End point
