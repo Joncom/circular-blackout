@@ -20,7 +20,7 @@
                 var length = Math.sqrt(x*x + y*y);
 
                 // Double it so points can be spaced out.
-                length *= 2;
+                //length *= 2;
 
                 draw = function(angle) {
 
@@ -84,10 +84,19 @@
 
                     if(angle > eighth * 4) {
 
-                        // Left Middle
+                        // Middle Left
                         points.push({
                             x: center_x - length,
                             y: center_y
+                        });
+                    }
+
+                    if(angle > eighth * 5) {
+
+                        // Top Left
+                        points.push({
+                            x: center_x - length,
+                            y: center_y - length
                         });
                     }
 
