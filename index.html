@@ -18,20 +18,22 @@
                 var x = canvas.width/2;
                 var y = canvas.height/2
                 var length = Math.sqrt(x*x + y*y);
-                length *= 99999; // XXX
+                //length *= 99999; // XXX
                 //length = 64;
 
                 draw = function(angle) {
 
                     context.clearRect ( 0 , 0 , canvas.width , canvas.height );
 
+                    var center_x = canvas.width/2;
+                    var center_y = canvas.width/2;
                     var eighth = Math.PI/4;
                     var points = [];
 
                     // Center
                     points.push({
-                        x: canvas.width/2,
-                        y: canvas.height/2
+                        x: center_x,
+                        y: center_y
                     });
 
                     // Bottom Middle
@@ -40,13 +42,21 @@
                         y: canvas.height
                     });
 
-                    if(angle >= eighth * 2) {
+                    var angle_to_bottom_right = Math.atan2(
+                        canvas.height - canvas.height/2,
+                        canvas.width - canvas.width/2
+                    );
+
+                    if(angle > angle_to_bottom_right) {
 
                         // Bottom Right
                         points.push({
                             x: canvas.width,
                             y: canvas.height
                         });
+                    }
+
+                    if(angle >= eighth * 2) {
 
                         // Middle Right
                         points.push({
