@@ -152,7 +152,6 @@
                     context.restore();
                 };
 
-                var settings = {};
                 var TOP_CW = { rotation: (Math.PI/4) * 6, ccw: false };
                 var TOP_CCW = { rotation: (Math.PI/4) * 2, ccw: true };
                 var BOTTOM_CW = { rotation: (Math.PI/4) * 2, ccw: false };
@@ -161,10 +160,10 @@
                 var LEFT_CCW = { rotation: 0, ccw: true };
                 var RIGHT_CW = { rotation: 0, ccw: false };
                 var RIGHT_CCW = { rotation: (Math.PI/4) * 4, ccw: true };
-                settings = TOP_CW;
 
                 // Animate
                 var n = 0;
+                var settings = TOP_CW;
                 setInterval(function() {
                     draw(n, settings);
                     n += 0.01;
