@@ -21,6 +21,7 @@
 
                 // Double it so points can be spaced out.
                 //length *= 2;
+                length = 64
 
                 draw = function(angle) {
 
@@ -96,6 +97,15 @@
                         // Top Left
                         points.push({
                             x: center_x - length,
+                            y: center_y - length
+                        });
+                    }
+
+                    if(angle > eighth * 6) {
+
+                        // Top Middle
+                        points.push({
+                            x: center_x,
                             y: center_y - length
                         });
                     }
