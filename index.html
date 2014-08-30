@@ -41,8 +41,6 @@
                     settings.ccw      = settings.ccw || false;
                     settings.rotation = settings.rotation || 0;
 
-                    context.clearRect ( 0 , 0 , canvas.width , canvas.height );
-
                     var center_x = canvas.width/2;
                     var center_y = canvas.height/2;
                     var eighth = Math.PI/4;
@@ -166,6 +164,7 @@
                 var n = 0;
                 var settings = TOP_CW;
                 setInterval(function() {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
                     draw(n, settings);
                     n += 0.01;
                 }, 20);
