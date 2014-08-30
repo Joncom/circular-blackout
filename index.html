@@ -17,13 +17,16 @@
                 // but that's OK.
                 length = Math.max(canvas.width, canvas.height);
 
-                draw = function(n, rotate_angle, ccw) {
+                draw = function(n, settings) {
 
                     // n is >= 0 and <= 1.
                     n = Math.max(n, 0);
                     n = Math.min(n, 1);
 
-                    ccw = ccw || false;
+                    // Set default settings.
+                    settings          = settings || {};
+                    settings.ccw      = settings.ccw || false;
+                    settings.rotation = settings.rotation || 0;
 
                     var angle = n * Math.PI * 2;
 
@@ -178,13 +181,13 @@
                     context.save();
 
                     // Rotate about canvas center.
-                    if(rotate_angle) {
+                    if(settings.rotation) {
                         context.translate(canvas.width/2, canvas.height/2);
-                        context.rotate(rotate_angle);
+                        context.rotate(settings.rotation);
                         context.translate(-canvas.width/2, -canvas.height/2);
                     }
 
-                    if(ccw) {
+                    if(settings.ccw) {
                         context.translate(canvas.width, 0);
                         context.scale(-1,1);
                     }
@@ -214,7 +217,7 @@
                 var n = 0;
                 var ccw = true;
                 setInterval(function() {
-                    draw(n, settings.rotation, settings.ccw);
+                    draw(n, settings);
                     n += 0.01;
                 }, 20);
             }
