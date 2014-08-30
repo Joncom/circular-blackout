@@ -19,6 +19,9 @@
                 var y = canvas.height/2
                 var length = Math.sqrt(x*x + y*y);
 
+                // Double it so points can be spaced out.
+                length *= 2;
+
                 draw = function(angle) {
 
                     // There is nothing more than 100%.
@@ -48,10 +51,20 @@
 
                     // Right Middle
                     points.push({
-                        x: canvas.width,
+                        x: center_x + length,
                         y: canvas.height/2
                     });
 
+                    if(angle > eighth) {
+
+                        // Bottom Right
+                        points.push({
+                            x: center_x + length,
+                            y: center_y + length
+                        });
+                    }
+
+                    /*
                     if(angle > angle_to_bottom_right) {
 
                         // Bottom Right
@@ -96,6 +109,7 @@
                             y: 0
                         });
                     }
+                    */
 
                     // End point
                     points.push({
@@ -107,9 +121,9 @@
                     context.save();
 
                     // Rotate about canvas center.
-                    context.translate(canvas.width/2, canvas.height/2);
-                    context.rotate((Math.PI/4) * 2);
-                    context.translate(-canvas.width/2, -canvas.height/2);
+                    //context.translate(canvas.width/2, canvas.height/2);
+                    //context.rotate((Math.PI/4) * 2);
+                    //context.translate(-canvas.width/2, -canvas.height/2);
 
                     var ccw = false;
                     if(ccw) {
@@ -130,7 +144,7 @@
                 var angle = 0;
                 setInterval(function() {
                     draw(angle);
-                    angle += 0.1;
+                    angle += 0.01;
                 }, 20);
             }
 
