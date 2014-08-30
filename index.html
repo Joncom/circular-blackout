@@ -5,6 +5,16 @@
         <title></title>
         <script type="text/javascript">
 
+            // Presets
+            TOP_CW = { rotation: (Math.PI/4) * 6, ccw: false };
+            TOP_CCW = { rotation: (Math.PI/4) * 2, ccw: true };
+            BOTTOM_CW = { rotation: (Math.PI/4) * 2, ccw: false };
+            BOTTOM_CCW = { rotation: (Math.PI/4) * 6, ccw: true };
+            LEFT_CW = { rotation: (Math.PI/4) * 4, ccw: false };
+            LEFT_CCW = { rotation: 0, ccw: true };
+            RIGHT_CW = { rotation: 0, ccw: false };
+            RIGHT_CCW = { rotation: (Math.PI/4) * 4, ccw: true };
+
             function init() {
 
                 canvas = document.getElementById('canvas');
@@ -151,15 +161,6 @@
 
                     context.restore();
                 };
-
-                var TOP_CW = { rotation: (Math.PI/4) * 6, ccw: false };
-                var TOP_CCW = { rotation: (Math.PI/4) * 2, ccw: true };
-                var BOTTOM_CW = { rotation: (Math.PI/4) * 2, ccw: false };
-                var BOTTOM_CCW = { rotation: (Math.PI/4) * 6, ccw: true };
-                var LEFT_CW = { rotation: (Math.PI/4) * 4, ccw: false };
-                var LEFT_CCW = { rotation: 0, ccw: true };
-                var RIGHT_CW = { rotation: 0, ccw: false };
-                var RIGHT_CCW = { rotation: (Math.PI/4) * 4, ccw: true };
 
                 // Animate
                 var n = 0;
