@@ -103,10 +103,10 @@
                         y: canvas.height/2 + Math.sin(angle) * length
                     });
 
-                    var ccw = true;
-
                     // Draw
                     context.save();
+
+                    var ccw = false;
                     if(ccw) {
                         context.translate(canvas.width, 0);
                         context.scale(-1,1);
