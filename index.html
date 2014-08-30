@@ -23,9 +23,8 @@
                 canvas.height = 480;
                 context.lineWidth = 2;
 
-                // Probably longer than it needs to be,
-                // but that's OK.
-                length = Math.max(canvas.width, canvas.height);
+                // Must be high enough to exceed canvas edges.
+                radius = Math.max(canvas.width, canvas.height);
 
                 draw = function(n, settings) {
 
@@ -54,7 +53,7 @@
 
                     // Right Middle
                     points.push({
-                        x: center_x + length,
+                        x: center_x + radius,
                         y: canvas.height/2
                     });
 
@@ -64,8 +63,8 @@
 
                         // Bottom Right
                         points.push({
-                            x: center_x + length,
-                            y: center_y + length
+                            x: center_x + radius,
+                            y: center_y + radius
                         });
 
                         if(angle > eighth * 2) {
@@ -73,22 +72,22 @@
                             // Bottom Middle
                             points.push({
                                 x: center_x,
-                                y: center_y + length
+                                y: center_y + radius
                             });
 
                             if(angle > eighth * 3) {
 
                                 // Bottom Left
                                 points.push({
-                                    x: center_x - length,
-                                    y: center_y + length
+                                    x: center_x - radius,
+                                    y: center_y + radius
                                 });
 
                                 if(angle > eighth * 4) {
 
                                     // Middle Left
                                     points.push({
-                                        x: center_x - length,
+                                        x: center_x - radius,
                                         y: center_y
                                     });
 
@@ -96,8 +95,8 @@
 
                                         // Top Left
                                         points.push({
-                                            x: center_x - length,
-                                            y: center_y - length
+                                            x: center_x - radius,
+                                            y: center_y - radius
                                         });
 
                                         if(angle > eighth * 6) {
@@ -105,15 +104,15 @@
                                             // Top Middle
                                             points.push({
                                                 x: center_x,
-                                                y: center_y - length
+                                                y: center_y - radius
                                             });
 
                                             if(angle > eighth * 7) {
 
                                                 // Top Middle
                                                 points.push({
-                                                    x: center_x + length,
-                                                    y: center_y - length
+                                                    x: center_x + radius,
+                                                    y: center_y - radius
                                                 });
                                             }
                                         }
@@ -125,8 +124,8 @@
 
                     // End point
                     points.push({
-                        x: canvas.width/2 + Math.cos(angle) * length,
-                        y: canvas.height/2 + Math.sin(angle) * length
+                        x: canvas.width/2 + Math.cos(angle) * radius,
+                        y: canvas.height/2 + Math.sin(angle) * radius
                     });
 
                     context.save();
