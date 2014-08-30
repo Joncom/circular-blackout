@@ -35,11 +35,7 @@
                         canvas.width - canvas.width/2
                     );
 
-                    var angle_to_bottom_left = Math.atan2(
-                        canvas.height - canvas.height/2,
-                        0 - canvas.width/2
-                    );
-
+                    var angle_to_bottom_left = Math.PI - angle_to_bottom_right;
                     var angle_to_top_left = angle_to_bottom_right + Math.PI;
                     var angle_to_top_right = angle_to_bottom_left + Math.PI;
 
