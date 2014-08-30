@@ -41,7 +41,7 @@
                     );
 
                     var angle_to_top_left = angle_to_bottom_right + Math.PI;
-                    //var angle_to_top_right = angle_to_bottom_left + Math.PI;
+                    var angle_to_top_right = angle_to_bottom_left + Math.PI;
 
                     // Center
                     points.push({
@@ -87,6 +87,15 @@
                         // Top Left
                         points.push({
                             x: 0,
+                            y: 0
+                        });
+                    }
+
+                    if(angle > angle_to_top_right) {
+
+                        // Top Right
+                        points.push({
+                            x: canvas.width,
                             y: 0
                         });
                     }
