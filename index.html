@@ -121,21 +121,26 @@
                         y: canvas.height/2 + Math.sin(angle) * length
                     });
 
-                    // Draw
                     context.save();
 
-                    // Rotate about canvas center.
+                    // Is rotation not 0?
                     if(settings.rotation) {
+
+                        // Rotate about canvas center.
                         context.translate(canvas.width/2, canvas.height/2);
                         context.rotate(settings.rotation);
                         context.translate(-canvas.width/2, -canvas.height/2);
                     }
 
+                    // Counter-clockwise?
                     if(settings.ccw) {
+
+                        // Flipping canvas changes direction.
                         context.translate(canvas.width, 0);
                         context.scale(-1,1);
                     }
 
+                    // Create polygon and fill.
                     context.beginPath();
                     context.moveTo(points[0].x, points[0].y);
                     for(var i=1; i<points.length; i++) {
@@ -143,6 +148,7 @@
                         context.lineTo(point.x, point.y);
                     }
                     context.fill();
+
                     context.restore();
                 };
 
