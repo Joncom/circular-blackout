@@ -13,15 +13,9 @@
                 canvas.height = 480;
                 context.lineWidth = 2;
 
-                // Calculate minimum length needed
-                // to reach canvas edges.
-                var x = canvas.width/2;
-                var y = canvas.height/2
-                var length = Math.sqrt(x*x + y*y);
-
-                // Double it so points can be spaced out.
-                //length *= 2;
-                length = 64
+                // Probably longer than it needs to be,
+                // but that's OK.
+                length = Math.max(canvas.width, canvas.height);
 
                 draw = function(angle) {
 
