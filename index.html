@@ -25,6 +25,7 @@
 
                     context.clearRect ( 0 , 0 , canvas.width , canvas.height );
 
+                    var eighth = Math.PI/4;
                     var points = [];
 
                     // Center
@@ -39,7 +40,7 @@
                         y: canvas.height
                     });
 
-                    if(angle >= (Math.PI/4) * 2) {
+                    if(angle >= eighth * 2) {
 
                         // Bottom Right
                         points.push({
@@ -54,7 +55,7 @@
                         });
                     }
 
-                    if(angle >= (Math.PI/4) * 3) {
+                    if(angle >= eighth * 3) {
 
                         // Top Right
                         points.push({
@@ -63,7 +64,7 @@
                         });
                     }
 
-                    if(angle >= (Math.PI/4) * 4) {
+                    if(angle >= eighth * 4) {
 
                         // Top Middle
                         points.push({
@@ -72,7 +73,7 @@
                         });
                     }
 
-                    if(angle >= (Math.PI/4) * 6) {
+                    if(angle >= eighth * 6) {
 
                         // Top Left
                         points.push({
@@ -87,7 +88,7 @@
                         });
                     }
 
-                    if(angle >= (Math.PI/4) * 8) {
+                    if(angle >= eighth * 8) {
 
                         // Bottom Middle
                         points.push({
