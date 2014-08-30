@@ -47,6 +47,11 @@
                         canvas.width - canvas.width/2
                     );
 
+                    var angle_to_bottom_left = Math.atan2(
+                        canvas.height - canvas.height/2,
+                        0 - canvas.width/2
+                    );
+
                     if(angle > angle_to_bottom_right) {
 
                         // Bottom Right
@@ -61,6 +66,15 @@
                         // Bottom Middle
                         points.push({
                             x: canvas.width/2,
+                            y: canvas.height
+                        });
+                    }
+
+                    if(angle > angle_to_bottom_left) {
+
+                        // Bottom Left
+                        points.push({
+                            x: 0,
                             y: canvas.height
                         });
                     }
