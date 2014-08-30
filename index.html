@@ -40,15 +40,6 @@
                     var eighth = Math.PI/4;
                     var points = [];
 
-                    var angle_to_bottom_right = Math.atan2(
-                        canvas.height - canvas.height/2,
-                        canvas.width - canvas.width/2
-                    );
-
-                    var angle_to_bottom_left = Math.PI - angle_to_bottom_right;
-                    var angle_to_top_left = angle_to_bottom_right + Math.PI;
-                    var angle_to_top_right = angle_to_bottom_left + Math.PI;
-
                     // Center
                     points.push({
                         x: center_x,
