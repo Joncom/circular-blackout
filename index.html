@@ -17,7 +17,13 @@
                 // but that's OK.
                 length = Math.max(canvas.width, canvas.height);
 
-                draw = function(angle) {
+                draw = function(n) {
+
+                    // n is >= 0 and <= 1.
+                    n = Math.max(n, 0);
+                    n = Math.min(n, 1);
+
+                    var angle = n * Math.PI * 2;
 
                     // There is nothing more than 100%.
                     if (angle > Math.PI * 2) angle = Math.PI * 2;
@@ -190,10 +196,10 @@
                 };
 
                 // Animate
-                var angle = 0;
+                var n = 0;
                 setInterval(function() {
-                    draw(angle);
-                    angle += 0.01;
+                    draw(n);
+                    n += 0.01;
                 }, 20);
             }
 
