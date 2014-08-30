@@ -36,10 +36,10 @@
                         y: center_y
                     });
 
-                    // Bottom Middle
+                    // Right Middle
                     points.push({
-                        x: canvas.width/2,
-                        y: canvas.height
+                        x: canvas.width,
+                        y: canvas.height/2
                     });
 
                     var angle_to_bottom_right = Math.atan2(
@@ -58,13 +58,14 @@
 
                     if(angle >= eighth * 2) {
 
-                        // Middle Right
+                        // Bottom Middle
                         points.push({
-                            x: canvas.width,
-                            y: canvas.height/2
+                            x: canvas.width/2,
+                            y: canvas.height
                         });
                     }
 
+                    /*
                     if(angle >= eighth * 3) {
 
                         // Top Right
@@ -106,6 +107,7 @@
                             y: canvas.height
                         });
                     }
+                    */
 
                     // End point
                     points.push({
