@@ -33,15 +33,13 @@
                     n = Math.max(n, 0);
                     n = Math.min(n, 1);
 
+                    // Convert n to an angle.
+                    var angle = n * Math.PI * 2;
+
                     // Set default settings.
                     settings          = settings || {};
                     settings.ccw      = settings.ccw || false;
                     settings.rotation = settings.rotation || 0;
-
-                    var angle = n * Math.PI * 2;
-
-                    // There is nothing more than 100%.
-                    if (angle > Math.PI * 2) angle = Math.PI * 2;
 
                     context.clearRect ( 0 , 0 , canvas.width , canvas.height );
 
